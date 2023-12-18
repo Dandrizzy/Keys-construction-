@@ -25,8 +25,8 @@ import EditMessage from "./features/Admin/EditMessage";
 import AdminProject from "./features/Admin/AdminProject";
 import DashBoardLayout from "./features/DashBoard/DashBoardLayout";
 import AdminServices from "./features/Admin/Services";
+import Login from "./pages/Login";
 
-console.log(import.meta.env.VITE_SUPABASE_URL);
 
 const router = createBrowserRouter([
   {
@@ -118,6 +118,12 @@ const router = createBrowserRouter([
       },
     ]
   },
+  {
+    element: <Login />,
+    path: '/login',
+    errorElement: <Error />,
+
+  }
 ]);
 
 const queryClient = new QueryClient({
