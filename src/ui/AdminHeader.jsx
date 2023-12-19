@@ -2,6 +2,7 @@ import IconButton from './IconButton';
 import { HiBars3 } from 'react-icons/hi2';
 import { useState } from 'react';
 import AdminNav from './AdminNav';
+import Logout from '../features/authentication/Logout';
 const AdminHeader = () => {
 
   const [openNav, setOpenNav] = useState(false);
@@ -19,9 +20,10 @@ const AdminHeader = () => {
           <IconButton className='flex gap-4'>
 
             <HiBars3
-              className='lg:hidden'
+              className='sm:hidden'
               onClick={() => setOpenNav(open => !open)} />
           </IconButton>
+          <Logout />
         </div>
       </div>
       {openNav && <AdminNav setOpenNav={setOpenNav} />}

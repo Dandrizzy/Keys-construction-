@@ -1,9 +1,8 @@
 import { useForm } from "react-hook-form";
-import Button from "../../ui/Button";
-import Form from "../../ui/Form";
-import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 import { useSignup } from "./useSignup";
+import { Form } from "react-router-dom";
+import FormRowVertical from "../../ui/FormRowVertical";
 
 // Email regex: /\S+@\S+\.\S+/
 
@@ -23,16 +22,16 @@ function SignupForm() {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <FormRow label="Full name" error={errors?.fullName?.message}>
+      <FormRowVertical label="Full name" error={errors?.fullName?.message}>
         <Input
           type="text"
           id="fullName"
           disabled={isLoading}
           {...register("fullName", { required: "This field is required" })}
         />
-      </FormRow>
+      </FormRowVertical>
 
-      <FormRow label="Email address" error={errors?.email?.message}>
+      <FormRowVertical label="Email address" error={errors?.email?.message}>
         <Input
           type="email"
           id="email"
@@ -45,9 +44,9 @@ function SignupForm() {
             },
           })}
         />
-      </FormRow>
+      </FormRowVertical>
 
-      <FormRow
+      <FormRowVertical
         label="Password (min 8 characters)"
         error={errors?.password?.message}
       >
@@ -63,9 +62,9 @@ function SignupForm() {
             },
           })}
         />
-      </FormRow>
+      </FormRowVertical>
 
-      <FormRow label="Repeat password" error={errors?.passwordConfirm?.message}>
+      <FormRowVertical label="Repeat password" error={errors?.passwordConfirm?.message}>
         <Input
           type="password"
           id="passwordConfirm"
@@ -76,20 +75,20 @@ function SignupForm() {
               value === getValues().password || "Passwords need to match",
           })}
         />
-      </FormRow>
+      </FormRowVertical>
 
-      <FormRow>
+      <div className="grid grid-cols-2 gap-4">
         {/* type is an HTML attribute! */}
-        <Button
-          variation="secondary"
+        <button
+          className=" text-slate-50 bg-yellow-300 p-2 rounded-full hover:bg-yellow-400 duration-500 transition-all disabled:bg-gray-700 disabled:cursor-not-allowed"
           type="reset"
           disabled={isLoading}
           onClick={reset}
         >
           Cancel
-        </Button>
-        <Button disabled={isLoading}>Create new user</Button>
-      </FormRow>
+        </button>
+        <button className=" text-slate-50 bg-yellow-300 p-2 rounded-full hover:bg-yellow-400 duration-500 transition-all disabled:bg-gray-700 disabled:cursor-not-allowed" disabled={isLoading}>Create New User</button>
+      </div>
     </Form>
   );
 }

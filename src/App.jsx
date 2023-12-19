@@ -4,6 +4,7 @@ import Error from './ui/Error';
 import Home from './pages/Home';
 import Landing from './pages/Landing';
 import Portfolio from './pages/Portfolio';
+import Users from './pages/Users';
 import Services from './pages/Services';
 import Blog from './pages/Blog';
 import About from './pages/About';
@@ -26,6 +27,8 @@ import AdminProject from "./features/Admin/AdminProject";
 import DashBoardLayout from "./features/DashBoard/DashBoardLayout";
 import AdminServices from "./features/Admin/Services";
 import Login from "./pages/Login";
+import ProtectedRoute from "./ui/ProtectedRoute";
+import Edit from "./pages/Edit";
 
 
 const router = createBrowserRouter([
@@ -81,12 +84,22 @@ const router = createBrowserRouter([
       ]
   },
   {
-    element: <AdminLayout />,
+    element: <ProtectedRoute>
+      <AdminLayout />
+    </ProtectedRoute>,
     errorElement: <Error />,
     children: [
       {
         path: '/admin',
         element: <DashBoardLayout />
+      },
+      {
+        path: '/admin/user',
+        element: <Users />
+      },
+      {
+        path: '/admin/edit',
+        element: <Edit />
       },
       {
         path: '/admin/messages',

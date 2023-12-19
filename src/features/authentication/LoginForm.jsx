@@ -7,6 +7,7 @@ import SpinnerMini from "../../ui/SpinnerMini";
 import { Form } from "react-router-dom";
 
 function LoginForm() {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, isLoading } = useLogin();
@@ -49,11 +50,13 @@ function LoginForm() {
           disabled={isLoading}
         />
       </FormRowVertical>
-      <FormRowVertical>
-        <button className="  bg-green-400 rounded-full p-2 font-semibold text-white hover:bg-green-500 disabled:bg-slate-500 disabled:cursor-not-allowed" disabled={isLoading || password.length < 8 || !email}>
+      <div className=" grid grid-cols-auto gap-4">
+        <button className="  bg-green-400 rounded-full p-2 font-semibold text-white hover:bg-green-500 disabled:bg-slate-500 disabled:cursor-not-allowed transition-all duration-500" disabled={isLoading || password.length < 8 || !email}>
           {!isLoading ? "Log in" : <SpinnerMini />}
         </button>
-      </FormRowVertical>
+
+
+      </div>
     </Form>
   );
 }
