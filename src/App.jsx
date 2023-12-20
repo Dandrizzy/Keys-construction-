@@ -29,6 +29,7 @@ import AdminServices from "./features/Admin/Services";
 import Login from "./pages/Login";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import Edit from "./pages/Edit";
+import EditProject from "./features/Admin/EditProject";
 
 
 const router = createBrowserRouter([
@@ -123,7 +124,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/admin/projects/:projectId',
-        element: <EditFaq />
+        element: <EditProject />
       },
       {
         path: '/admin/services',

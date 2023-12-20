@@ -20,7 +20,7 @@ const AdminNav = () => {
 
  const active = ' bg-yellow-200/30 p-4 rounded-md hover:rounded-lg cursor-pointer';
  return (
-  <nav className=''>
+  <nav className=' tracking-wide'>
    <div className=" divide-x-4 divide-yellow-200 uppercase p-4 flex flex-col sm:h-[100vh]  gap-2 ">
     <div className=" text-center">
      <img src={avatar || "default-user.jpg"} alt={fullName} className='h-[100px] w-[100px] rounded-full mx-auto border-white border-4 shadow-md drop-shadow-lg' />
@@ -28,17 +28,23 @@ const AdminNav = () => {
      <p className=' text-sm'>last sign in {lastSignIn}</p>
     </div>
 
-    <div className={admin ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => navigate('/admin')}>dashboard</div>
+    <div className={admin ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => navigate('/admin')}>
+     dashboard
+    </div>
 
-    <div className={msg ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => navigate('/admin/messages')}>messages</div>
+    <div className={msg ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => navigate('/admin/messages')}>
+     messages
+    </div>
 
-    <div className={projects ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => navigate('/admin/projects')}>projects</div>
+    <div className={projects ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => navigate('/admin/projects')}>
+     projects
+    </div>
 
     <div className={services ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => navigate('/admin/services')}>services</div>
 
     <div className={faqs ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => navigate('/admin/faqs')}>faqs</div>
 
-    <div className={edit ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => navigate('/admin/edit')}>edit user</div>
+    <div className={edit ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => navigate('/admin/edit')}>edit account</div>
 
     <div className={users ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => navigate('/admin/user')}>create new admin</div>
 

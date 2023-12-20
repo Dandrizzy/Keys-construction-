@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 export const useEditProject = () => {
   const queryClient = useQueryClient();
 
-  const { mutate: editProject, isLoading: isEditing } = useMutation({
+  const { mutate: editProject, isPending: isEditing } = useMutation({
     mutationFn: ({ newProjectData, id }) =>
       createEditProject(newProjectData, id),
 
@@ -14,7 +14,7 @@ export const useEditProject = () => {
       queryClient.invalidateQueries({ queryKey: ['project'] });
     },
     onError: (err) => {
-      toast.error(err.message);
+      toast.error(err.message, err.name);
     },
   });
 

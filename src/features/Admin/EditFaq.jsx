@@ -40,12 +40,26 @@ const EditFaq = () => {
  return (
   <div className="">
    <div className=" text-center">
-    <Form key={specificFaq.id} onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit)}>
+
      <Input className="w-full sm:mx-auto sm:my-0 sm:w-[75%] p-4 border-b-2 border-b-yellow-500" defaultValue={specificFaq.question} {...register('question')} />
+
+
      <Input className="w-full sm:mx-auto sm:my-0 sm:w-[75%] p-4 border-b-2 border-b-yellow-500" defaultValue={specificFaq.answer} {...register('answer')} />
+
+
      <div className=" sm:flex p-4 text-center grid grid-cols-2 gap-x-4 justify-center">
-      <Button type="submit" className=" w-full sm:max-w-xs">{isEditing ? <SpinnerMini /> : 'Edit'}</Button>
-      <Button type="cancel" className=" w-full sm:max-w-sm" onClick={() => navigate('/admin/faqs')}>Back &larr;</Button>
+
+
+      <Button type="submit" className=" w-full sm:max-w-xs">
+       {isEditing ? <SpinnerMini /> : 'Edit'}
+      </Button>
+
+
+      <Button type="cancel" className=" w-full sm:max-w-sm" onClick={() => navigate('/admin/faqs')}>
+       Back &larr;
+      </Button>
+
      </div>
     </Form>;
 
