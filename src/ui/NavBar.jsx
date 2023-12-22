@@ -84,6 +84,14 @@ const NavBar = ({ setOpenNav }) => {
      }}
      className={location.pathname === '/contact' ? active : li}
     >Contact</li>
+
+    <li
+     onClick={() => {
+      navigate('/login');
+      setOpenNav(false);
+     }}
+     className={li}
+    >Contact</li>
    </ul>
   </nav>
  );
