@@ -41,7 +41,12 @@ export async function createEditProject(newProject, id) {
 
   // B) EDIT
   if (id)
-    query = query.update({ ...newProject, image: imagePath }).eq('id', id);
+    query = query
+      .update({
+        ...newProject,
+        // image: imagePath
+      })
+      .eq('id', id);
 
   const { data, error } = await query.select().single();
 
@@ -93,7 +98,11 @@ export const createProject = async (newProject) => {
 };
 
 export async function deleteProject(id) {
-  const { data, error } = supabase.from('project').delete().eq('id', id);
+  const { data, error } = supabase
+    .from('project')
+    .delete()
+    .eq('id', id)
+    .single();
 
   if (error) {
     throw new Error('Project could not be deleted');

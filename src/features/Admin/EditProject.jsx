@@ -1,26 +1,34 @@
-import { Form, useNavigate, useParams } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import { useSpecificProject } from "./useSpecificProject";
+import { MdCancel, MdDeleteForever, MdOutlineUpdate } from 'react-icons/md';
 import Spinner from '../../ui/Spinner';
 import SpinnerMini from '../../ui/SpinnerMini';
 import Button from '../../ui/Button';
 import Input from "../../ui/Input";
 import { useEditProject } from "./useEditProject";
 import { useForm, } from "react-hook-form";
+import { useDeleteProject } from "./useDeleteProject";
+// import FileInput from "../../ui/FileInput";
 
 const EditProject = () => {
- const { projectId: id } = useParams();
+ const { deleteProject, isDeleting } = useDeleteProject();
  const navigate = useNavigate();
  const { project = [], isLoading } = useSpecificProject();
- const { title, description, status, image } = project;
+ const { title, description, status, image, id } = project;
  const { editProject, isEditing } = useEditProject();
  const { register, handleSubmit, } = useForm();
- // console.log(project);
- if (isLoading || isEditing) return <Spinner />;
+ console.log(project);
+
+ if (isLoading) return <Spinner />;
  console.log(id);
 
  const onSubmit = (data) => {
-  console.log(data);
-  editProject({ newProjectData: { ...data }, id: id });
+  editProject({ newProjectData: { ...data, image: image }, id: id }, { onSettled: () => navigate('/admin/projects') });
+
+ };
+
+ const onDelete = (id) => {
+  deleteProject(id);
  };
 
  return (
@@ -42,14 +50,24 @@ const EditProject = () => {
      <option value="in-progress">In Progress</option>
     </select>
 
-    <label htmlFor="img">{image}</label>
     <label htmlFor="img">Image</label>
-    {/* <Input type="file" defaultValue={image} id="img" {...register('image')} /> */}
+    <Input value={image} disabled id="img" className=" cursor-not-allowed disabled:text-slate-300" />
 
     <div className="flex gap-4 py-3">
 
-     <Button type="submit">{isEditing ? <SpinnerMini /> : 'Update Project'}</Button>
-     <Button type="reset" onClick={() => navigate('/admin/projects')}>Cancel</Button>
+     <Button type="submit">
+      <MdOutlineUpdate />
+      {isEditing ? <SpinnerMini /> : 'Update Project'}</Button>
+
+     <Button type="reset" variation='secondary' onClick={() => navigate('/admin/projects')}>
+      <MdCancel />
+      Cancel</Button>
+
+     <Button variation='danger' type="button" onClick={() => onDelete(id)}>
+      <MdDeleteForever />
+      {isDeleting ? <SpinnerMini /> : 'Delete'}
+     </Button>
+
     </div>
 
    </Form>

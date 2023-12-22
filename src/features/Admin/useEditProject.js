@@ -6,6 +6,7 @@ export const useEditProject = () => {
   const queryClient = useQueryClient();
 
   const { mutate: editProject, isPending: isEditing } = useMutation({
+    mutationKey: ['project'],
     mutationFn: ({ newProjectData, id }) =>
       createEditProject(newProjectData, id),
 
