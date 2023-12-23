@@ -17,17 +17,15 @@ const EditProject = () => {
  const { title, description, status, image, id } = project;
  const { editProject, isEditing } = useEditProject();
  const { register, handleSubmit, } = useForm();
- console.log(project);
 
  if (isLoading) return <Spinner />;
- console.log(id);
 
  const onSubmit = (data) => {
   editProject({ newProjectData: { ...data, image: image }, id: id }, { onSettled: () => navigate('/admin/projects') });
 
  };
 
- const onDelete = (id) => {
+ const onDelete = () => {
   deleteProject(id);
  };
 
@@ -63,7 +61,7 @@ const EditProject = () => {
       <MdCancel />
       Cancel</Button>
 
-     <Button variation='danger' type="button" onClick={() => onDelete(id)}>
+     <Button variation='danger' type="button" onClick={onDelete}>
       <MdDeleteForever />
       {isDeleting ? <SpinnerMini /> : 'Delete'}
      </Button>

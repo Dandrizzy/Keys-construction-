@@ -91,7 +91,7 @@ const NavBar = ({ setOpenNav }) => {
       setOpenNav(false);
      }}
      className={li}
-    >Contact</li>
+    >Login</li>
    </ul>
   </nav>
  );
