@@ -97,16 +97,12 @@ export const createProject = async (newProject) => {
   if (error) throw new Error();
 };
 
-export async function deleteProject(id) {
-  const { data, error } = supabase
-    .from('project')
-    .delete()
-    .eq('id', id)
-    .single();
+export const deleteProject = async (id) => {
+  const { data, error } = supabase.from('project').delete().eq('id', id);
 
   if (error) {
     throw new Error('Project could not be deleted');
   }
 
   return data;
-}
+};

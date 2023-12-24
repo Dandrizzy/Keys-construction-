@@ -1,21 +1,21 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import toast from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import { deleteProject as deleteFn } from '../../Services/apiProject';
 
-export const useDeleteProject = () => {
+export function useDeleteProject() {
   const queryClient = useQueryClient();
-  const { mutation: deleteProject, isPending: isDeleting } = useMutation({
-    mutationFn: (id) => deleteFn(id),
-    mutationKey: ['project'],
+
+  const { isPending: isDeleting, mutate: deleteProject } = useMutation({
+    mutationFn: deleteFn,
     onSuccess: () => {
-      toast.success('Project successfully deleted');
-      queryClient.invalidateQueries(['project']);
+      toast.success('Cabin successfully deleted');
+
+      queryClient.invalidateQueries({
+        queryKey: ['project'],
+      });
     },
-    onError: (error) => {
-      toast.error('There is an error:', error.message);
-      throw new Error('There is an error:', error.message);
-    },
+    onError: (err) => toast.error(err.message),
   });
 
-  return { deleteProject, isDeleting };
-};
+  return { isDeleting, deleteProject };
+}

@@ -115,7 +115,7 @@ const router = createBrowserRouter([
         element: <EditFaq />
       },
       {
-        path: '/admin/faqs/:messageId',
+        path: '/admin/messages/:messageId',
         element: <EditMessage />
       },
       {

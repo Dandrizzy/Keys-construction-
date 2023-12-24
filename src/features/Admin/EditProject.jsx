@@ -25,10 +25,6 @@ const EditProject = () => {
 
  };
 
- const onDelete = () => {
-  deleteProject(id);
- };
-
  return (
   <>
    <Form className="grid max-w-2xl p-4 gap-3" onSubmit={handleSubmit(onSubmit)}  >
@@ -61,7 +57,10 @@ const EditProject = () => {
       <MdCancel />
       Cancel</Button>
 
-     <Button variation='danger' type="button" onClick={onDelete}>
+     <Button variation='danger' type="button" onClick={() => {
+      deleteProject(id);
+      isDeleting || navigate('/admin/projects');
+     }}>
       <MdDeleteForever />
       {isDeleting ? <SpinnerMini /> : 'Delete'}
      </Button>
