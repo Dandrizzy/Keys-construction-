@@ -12,13 +12,15 @@ const LoginLayout = styled.main`
   gap: 3.2rem;
   padding: 0 2rem;
   background: rgba(0 0 0 / 0.2);
-  /* backdrop-filter: grayscale(200px); */
+  /* backdrop-filter: grayscale(200px); 
+  bg-rose-800*/
 
 `;
 
 function Login() {
   return (
-    <div className=" bg-rose-800 text-slate-100 ">
+    <div className=" bg-gradient-to-br from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%
+     text-slate-100 ">
       <LoginLayout id="login">
         {/* <Logo /> */}
         <Heading as="h4">Log in to your account</Heading>

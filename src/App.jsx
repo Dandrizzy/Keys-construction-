@@ -14,7 +14,6 @@ import Service from "./pages/Service";
 import Project from "./pages/Project";
 import Quote from "./pages/Quote";
 import PageNotFound from "./pages/PageNotFound";
-import ServicesID from "./pages/ServicesID";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
@@ -25,7 +24,7 @@ import AdminMessages from "./features/Admin/AdminMessages";
 import EditMessage from "./features/Admin/EditMessage";
 import AdminProject from "./features/Admin/AdminProject";
 import DashBoardLayout from "./features/DashBoard/DashBoardLayout";
-import AdminServices from "./features/Admin/Services";
+import AdminServices from "./features/Admin/AdminServices";
 import Login from "./pages/Login";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import Edit from "./pages/Edit";
@@ -60,7 +59,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/services/:id',
-        element: <ServicesID />
+        element: <img />
       },
       {
         path: '/service',
