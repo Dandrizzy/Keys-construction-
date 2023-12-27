@@ -12,10 +12,11 @@ export function useLogin() {
     onSuccess: (user) => {
       queryClient.setQueryData(['user'], user.user);
       navigate('/admin', { replace: true });
+      console.log(user.user);
     },
     onError: (err) => {
-      console.log('ERROR', err);
-      toast.error('Provided email or password are incorrect', err.message);
+      console.log('ERROR', err.message);
+      toast.error('Provided email or password are incorrect - ' + err.message);
     },
   });
 
