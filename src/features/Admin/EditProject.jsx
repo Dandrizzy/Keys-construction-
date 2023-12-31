@@ -51,15 +51,15 @@ const EditProject = () => {
 
      <Button type="submit">
       <MdOutlineUpdate />
-      {isEditing ? <SpinnerMini /> : 'Update Project'}</Button>
+      {isEditing ? <SpinnerMini /> : 'Update'}</Button>
 
      <Button type="reset" variation='secondary' onClick={() => navigate('/admin/projects')}>
       <MdCancel />
       Cancel</Button>
 
      <Button variation='danger' type="button" onClick={() => {
-      deleteProject(id);
-      isDeleting || navigate('/admin/projects');
+      deleteProject(id, { onSuccess: () => navigate('/admin/projects') });
+
      }}>
       <MdDeleteForever />
       {isDeleting ? <SpinnerMini /> : 'Delete'}

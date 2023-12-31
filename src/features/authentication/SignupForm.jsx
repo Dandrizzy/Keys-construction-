@@ -77,7 +77,7 @@ function SignupForm() {
         />
       </FormRowVertical>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4 py-8">
         {/* type is an HTML attribute! */}
         <button
           className=" text-slate-50 bg-yellow-300 p-2 rounded-full hover:bg-yellow-400 duration-500 transition-all disabled:bg-gray-700 disabled:cursor-not-allowed"

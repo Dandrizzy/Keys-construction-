@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 export function useEditFaq() {
   const queryClient = useQueryClient();
 
-  const { mutate: editFaqs, isLoading: isEditing } = useMutation({
+  const { mutate: editFaqs, isPending: isEditing } = useMutation({
     mutationFn: ({ newFaqData, id }) => editFaq(newFaqData, id),
     onSuccess: () => {
       toast.success('Question successfully edited');

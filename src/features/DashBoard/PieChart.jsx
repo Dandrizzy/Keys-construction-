@@ -57,7 +57,7 @@ const PieCharts = () => {
   return (
     <ChartBox >
 
-      <ResponsiveContainer width='100%' height={300} >
+      <ResponsiveContainer width='100%' height={350} >
         <PieChart >
           <Pie
             data={data}
@@ -80,8 +80,8 @@ const PieCharts = () => {
         </PieChart>
 
       </ResponsiveContainer>
-      <ResponsiveContainer width='100%' height={300}>
-        <BarChart width={730} height={250} data={data}>
+      <ResponsiveContainer width='100%' height={350}>
+        <BarChart width={700} height={250} data={data}>
 
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />

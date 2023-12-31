@@ -19,7 +19,7 @@ const ProjectList = ({ item, index }) => {
 
  return (
   < >
-   <div className="p-4 grid grid-cols-[2.5rem_1fr_2fr_95px]" onClick={handleClick}>
+   <div className="p-4 gap-1 grid grid-cols-[2.5rem_1fr_2fr_95px] odd:bg-slate-100" onClick={handleClick}>
 
     <div className=" text-center font-semibold">{index + 1}</div>
 

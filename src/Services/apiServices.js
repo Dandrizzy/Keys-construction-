@@ -1,7 +1,7 @@
-import supabase, { supabaseUrl } from './supabase';
+import supabase from './supabase';
 
 export const getServices = async () => {
-  const { data, error } = await supabase.from('service').select('*');
+  const { data, error } = await supabase.from('services').select('*');
 
   if (error) {
     console.log(error);
@@ -13,7 +13,7 @@ export const getServices = async () => {
 
 export const getSpecificService = async (id) => {
   const { data: services, error } = await supabase
-    .from('service')
+    .from('services')
     .select('*')
     .eq('id', id)
     .single();
@@ -23,59 +23,37 @@ export const getSpecificService = async (id) => {
   return services;
 };
 
-export async function createEditService(newService, id) {
-  const hasImagePath = newService.image?.startsWith?.(supabaseUrl);
+export async function createService(newService) {
+  const { data, error } = await supabase
+    .from('services')
+    .insert([{ ...newService }])
+    .select()
+    .single();
 
-  const imageName = `${Math.random()}-${newService.image.name}`
-    .replaceAll('/', '')
-    .replace('.', '');
-  const imagePath = hasImagePath
-    ? newService.image
-    : `${supabaseUrl}/storage/v1/object/public/service/${imageName}`;
+  if (error) {
+    console.error(error);
+    throw new Error('services could not be created', error.message);
+  }
 
-  // 1. Create/edit cabin
-  let query = supabase.from('service');
-
-  // A) CREATE
-  if (!id) query = query.insert([{ ...newService, image: imagePath }]);
-
-  // B) EDIT
-  if (id)
-    query = query
-      .update({
-        ...newService,
-        // image: imagePath
-      })
-      .eq('id', id);
-
-  const { data, error } = await query.select().single();
+  return data;
+}
+export async function editService(newService, id) {
+  const { data, error } = await supabase
+    .from('services')
+    .update({ ...newService })
+    .eq('id', id)
+    .select();
 
   if (error) {
     console.error(error.message);
-    throw new Error('service could not be created', error.message);
-  }
-
-  // 2. Upload image
-  if (hasImagePath) return data;
-
-  const { error: storageError } = await supabase.storage
-    .from('service')
-    .upload(imageName, newService.image);
-
-  // 3. Delete the cabin IF there was an error uploading image
-  if (storageError) {
-    await supabase.from('service').delete().eq('id', data.id);
-    console.error(storageError);
-    throw new Error(
-      'service image could not be uploaded and the service was not created'
-    );
+    throw new Error('services could not be created', error.message);
   }
 
   return data;
 }
 
 export const deleteService = async (id) => {
-  const { data, error } = supabase.from('service').delete().eq('id', id);
+  const { data, error } = await supabase.from('services').delete().eq('id', id);
 
   if (error) {
     throw new Error('Service could not be deleted', error.message);

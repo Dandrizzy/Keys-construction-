@@ -4,7 +4,7 @@ import H1 from './H1';
 import { useUser } from '../features/authentication/useUser';
 import { formatDate } from '../utils/helpers';
 
-const AdminNav = () => {
+const AdminNav = ({ setOpenNav }) => {
  const navigate = useNavigate();
  const location = useLocation();
  const { user, } = useUser();
@@ -28,25 +28,46 @@ const AdminNav = () => {
      <p className=' text-sm'>last sign in {lastSignIn}</p>
     </div>
 
-    <div className={admin ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => navigate('/admin')}>
+    <div className={admin ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => {
+     navigate('/admin');
+     setOpenNav(false);
+    }}>
      dashboard
     </div>
 
-    <div className={msg ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => navigate('/admin/messages')}>
+    <div className={msg ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => {
+     navigate('/admin/messages');
+     setOpenNav(false);
+    }}>
      messages
     </div>
 
-    <div className={projects ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => navigate('/admin/projects')}>
+    <div className={projects ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => {
+     navigate('/admin/projects');
+     setOpenNav(false);
+    }}>
      projects
     </div>
 
-    <div className={services ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => navigate('/admin/services')}>services</div>
+    <div className={services ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => {
+     navigate('/admin/services');
+     setOpenNav(false);
+    }}>services</div>
 
-    <div className={faqs ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => navigate('/admin/faqs')}>faqs</div>
+    <div className={faqs ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => {
+     navigate('/admin/faqs');
+     setOpenNav(false);
+    }}>faqs</div>
 
-    <div className={edit ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => navigate('/admin/edit')}>edit account</div>
+    <div className={edit ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => {
+     navigate('/admin/edit');
+     setOpenNav(false);
+    }}>edit account</div>
 
-    <div className={users ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => navigate('/admin/user')}>create new admin</div>
+    <div className={users ? active : " hover:bg-slate-200/50 p-4 rounded-md hover:rounded-lg cursor-pointer"} onClick={() => {
+     navigate('/admin/user');
+     setOpenNav(false);
+    }}>create new admin</div>
 
    </div>
   </nav>

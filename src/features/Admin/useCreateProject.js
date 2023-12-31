@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 
 export const useCreateProject = () => {
   const queryClient = useQueryClient();
-  const { mutate: createProject, isLoading: isCreating } = useMutation({
+  const { mutate: createProject, isPending: isCreating } = useMutation({
     mutationFn: createEditProject,
     onSuccess: () => {
       toast.success('New Project successfully created');

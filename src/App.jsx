@@ -29,6 +29,7 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import Edit from "./pages/Edit";
 import EditProject from "./features/Admin/EditProject";
+import EditService from "./features/Admin/EditService";
 
 
 const router = createBrowserRouter([
@@ -128,6 +129,10 @@ const router = createBrowserRouter([
       {
         path: '/admin/services',
         element: <AdminServices />
+      },
+      {
+        path: '/admin/services/:serviceId',
+        element: <EditService />
       },
     ]
   },
