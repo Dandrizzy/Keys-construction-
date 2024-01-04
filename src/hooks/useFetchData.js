@@ -11,5 +11,7 @@ export const useFetchData = ({ key, fn }) => {
     throw new Error('There was an error loading data-', error.message);
   }
 
-  return { data, isLoading };
+  const length = data?.length;
+
+  return { data, isLoading, length };
 };

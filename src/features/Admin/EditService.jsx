@@ -28,7 +28,7 @@ const EditService = () => {
 
  return (
   <>
-   <Form className="grid max-w-2xl p-4 gap-3" onSubmit={handleSubmit(onSubmit)}>
+   <Form className="grid sm:max-w-2xl p-4 gap-3" onSubmit={handleSubmit(onSubmit)}>
 
     <label htmlFor="title">Title</label>
     <Input defaultValue={title} id="title" {...register('title')} />

@@ -15,13 +15,13 @@ const HomePage = () => {
    <div className="py-10 sm:flex sm:flex-wrap">
     <HomeLists />
    </div>
-   <div className="lg:flex">
-    <div className="py-10">
-     <HomeActivities />
-    </div>
-    <HomeProject />
-    <HomeAbout />
+
+   <div className="grid lg:flex">
+    <HomeActivities />
    </div>
+   <HomeProject />
+   <HomeAbout />
+
    <HomeTestimonies />
    <Contact />
   </>

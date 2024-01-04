@@ -30,6 +30,7 @@ import ProtectedRoute from "./ui/ProtectedRoute";
 import Edit from "./pages/Edit";
 import EditProject from "./features/Admin/EditProject";
 import EditService from "./features/Admin/EditService";
+import Update from "./pages/Update";
 
 
 const router = createBrowserRouter([
@@ -97,6 +98,10 @@ const router = createBrowserRouter([
       {
         path: '/admin/user',
         element: <Users />
+      },
+      {
+        path: '/admin/update',
+        element: <Update />
       },
       {
         path: '/admin/edit',

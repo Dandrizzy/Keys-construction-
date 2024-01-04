@@ -2,6 +2,9 @@ import { Pie, ResponsiveContainer, PieChart, Cell, Tooltip, Legend, CartesianGri
 import styled from "styled-components";
 import { useFaq } from "../Faq/useFaq";
 import { useMsg } from "../Admin/useMsg";
+import { useFetchData } from "../../hooks/useFetchData";
+import { getServices } from "../../Services/apiServices";
+import { useProject } from "../Admin/useProject";
 
 
 const ChartBox = styled.div`
@@ -26,7 +29,10 @@ const ChartBox = styled.div`
 
 const PieCharts = () => {
   const { faqLength } = useFaq();
-  const { length } = useMsg();
+  const { length: msgLength } = useMsg();
+  const { projectLength } = useProject();
+
+  const { length: serviceLength } = useFetchData({ key: 'services', fn: getServices });
 
 
   const RADIAN = Math.PI / 180;
@@ -44,9 +50,9 @@ const PieCharts = () => {
 
   const data = [
     { name: 'FAQs', value: faqLength },
-    { name: 'MESSAGES', value: length },
-    { name: 'PROJECTS', value: 3 },
-    { name: 'SERVICES', value: 2 },
+    { name: 'MESSAGES', value: msgLength },
+    { name: 'PROJECTS', value: projectLength },
+    { name: 'SERVICES', value: serviceLength },
   ];
 
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];

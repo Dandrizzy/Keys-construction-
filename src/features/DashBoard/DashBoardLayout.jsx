@@ -6,10 +6,9 @@ const DashBoardLayout = ({ faq, isLoading, messages, fetchingMsg }) => {
  if (isLoading || fetchingMsg) return <Spinner />;
 
  return (
-  <div className="grid gap-4 lg:grid-cols-2 sm:grid-cols-1 p-4  justify-center items-center ">
+  <div className="grid gap-4 lg:grid-cols-2 grid-cols-1 p-4  justify-center items-center ">
    <PieCharts faq={faq} messages={messages} />
    <LineCharts faq={faq} messages={messages} />
-
   </div>
  );
 };

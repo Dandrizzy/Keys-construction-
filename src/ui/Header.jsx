@@ -11,7 +11,7 @@ const Header = () => {
     <>
       <div className='flex justify-between items-center p-4 bg-yellow-500 '>
         <h1 className='sm:text-4xl text-xl font-semibold text-slate-100'>
-          Keys Construction
+          Keys Construct
         </h1>
 
 

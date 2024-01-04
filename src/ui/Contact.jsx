@@ -3,10 +3,10 @@ import HomeContact from "../features/Home/HomeContact";
 
 const Contact = () => {
  return (
-  <div className="lg:flex lg:justify-center">
+  < >
    <HomeContact />
    <HomeAddress />
-  </div>
+  </>
  );
 };
 

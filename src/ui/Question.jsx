@@ -3,35 +3,21 @@ import { Form } from "react-router-dom";
 import Input from "./Input";
 import Button from "./Button";
 import useCreateFaq from "../features/Faq/useCreateFaq";
+import SpinnerMini from "./SpinnerMini";
 
 const Question = () => {
- const { register, handleSubmit, getValues } = useForm();
- const { addFaq, isLoading: isAdding } = useCreateFaq();
+ const { register, handleSubmit, reset } = useForm();
+ const { addFaq, isPending: isAdding } = useCreateFaq();
 
-
- const question = getValues('question');
- console.log(question);
- // function onSubmit(e, field) {
- //  const { value } = e.target;
-
- //  if (!value) return;
- //  addFaq({ [field]: value });
- //  console.log(question);
- // }
  function onSubmit(data) {
-
-
-
-  addFaq({ ...data, answer: null });
-  console.log(data);
-  console.log(addFaq);
+  addFaq({ ...data, answer: null }, { onSuccess: () => reset() });
  }
 
 
  return (
   <Form onSubmit={handleSubmit(onSubmit)} className="grid">
    <Input className="my-8 border-b-2 border-b-yellow-500 w-full lg:w-auto" placeholder="Question?" {...register('question')} required />
-   <Button disabled={isAdding} className="md:w-1/4" type="submit">Add</Button>
+   <Button disabled={isAdding} className="md:w-1/4" type="submit">{isAdding ? <SpinnerMini /> : 'Add'}</Button>
   </Form>
  );
 };

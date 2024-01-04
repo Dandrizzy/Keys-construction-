@@ -1,19 +1,19 @@
 import styled, { css } from "styled-components";
 
 const sizes = {
- small: css`
+  small: css`
     font-size: 1.2rem;
     padding: 0.4rem 0.8rem;
     text-transform: uppercase;
     font-weight: 600;
     text-align: center;
   `,
- medium: css`
+  medium: css`
     font-size: 1.4rem;
     padding: 0.2rem 1.6rem;
     font-weight: 500;
   `,
- large: css`
+  large: css`
     font-size: 1.6rem;
     padding: 1.2rem 2.4rem;
     font-weight: 500;
@@ -21,7 +21,7 @@ const sizes = {
 };
 
 const variations = {
- primary: css`
+  primary: css`
     color: var(--color-brand-50);
     background-color: rgba(253, 204, 21, 0.8 );;
 
@@ -29,7 +29,7 @@ const variations = {
       background-color: rgba(253, 204, 21, 0.8 );
     }
   `,
- secondary: css`
+  secondary: css`
     color: #4b5563;
     background: #fff;
     border: 1px solid #e5e7eb;
@@ -38,7 +38,7 @@ const variations = {
       background-color: #f9fafb;
     }
   `,
- danger: css`
+  danger: css`
     color: #fee2e2;
     background-color: #b91c1c;
 
@@ -56,14 +56,21 @@ gap: 0.5rem;
   border: none;
   border-radius: 25px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+&:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+  &:hover {
+      background-color: gray;
+  }
+}
 
   ${(props) => sizes[props.size]}
   ${(props) => variations[props.variation]}
 `;
 
 Button.defaultProps = {
- variation: "primary",
- size: "medium",
+  variation: "primary",
+  size: "medium",
 };
 
 export default Button;

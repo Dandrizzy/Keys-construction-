@@ -6,7 +6,7 @@ function useCreateFaq() {
   const queryClient = useQueryClient();
   const {
     mutate: addFaq,
-    isLoading,
+    isPending,
     error,
   } = useMutation({
     mutationFn: createFaq,
@@ -18,7 +18,7 @@ function useCreateFaq() {
     onError: (err) => toast.error(err.message),
   });
 
-  return { addFaq, error, isLoading };
+  return { addFaq, error, isPending };
 }
 
 export default useCreateFaq;

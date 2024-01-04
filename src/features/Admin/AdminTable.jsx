@@ -5,10 +5,14 @@ import { MdQuestionAnswer } from 'react-icons/md';
 import { useNavigate } from "react-router-dom";
 import Spinner from "../../ui/Spinner";
 import { useProject } from "./useProject";
+import { useFetchData } from "../../hooks/useFetchData";
+import { getServices } from "../../Services/apiServices";
 
 const AdminTable = ({ faq, isLoading, messages, fetchingMsg }) => {
 
  const { projectLength, isLoading: fetchingProject } = useProject();
+
+ const { length: serviceLength } = useFetchData({ key: 'services', fn: getServices });
 
  const navigate = useNavigate();
 
@@ -37,7 +41,7 @@ const AdminTable = ({ faq, isLoading, messages, fetchingMsg }) => {
    {/* services */}
    <div onClick={() => navigate('/admin/services')} className=" cursor-pointer bg-[#fff] p-4 text-center">
     <H1 className="inline-flex items-center gap-x-4 text-[#FF8042]"> <FaCogs className="text-4xl" /></H1>
-    <H1>23</H1>
+    <H1>{serviceLength}</H1>
     <p>Services</p>
    </div>
 

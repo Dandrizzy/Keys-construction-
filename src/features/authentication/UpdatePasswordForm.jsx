@@ -1,10 +1,11 @@
 import { useForm } from "react-hook-form";
 import Button from "../../ui/Button";
-import Form from "../../ui/Form";
-import FormRow from "../../ui/FormRow";
+import FormRowVertical from "../../ui/FormRowVertical";
 import Input from "../../ui/Input";
 
 import { useUpdateUser } from "./useUpdateUser";
+import { Form } from "react-router-dom";
+import SpinnerMini from "../../ui/SpinnerMini";
 
 function UpdatePasswordForm() {
   const { register, handleSubmit, formState, getValues, reset } = useForm();
@@ -18,7 +19,7 @@ function UpdatePasswordForm() {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <FormRow
+      <FormRowVertical
         label="New password (min 8 chars)"
         error={errors?.password?.message}
       >
@@ -35,9 +36,9 @@ function UpdatePasswordForm() {
             },
           })}
         />
-      </FormRow>
+      </FormRowVertical>
 
-      <FormRow
+      <FormRowVertical
         label="Confirm password"
         error={errors?.passwordConfirm?.message}
       >
@@ -52,13 +53,13 @@ function UpdatePasswordForm() {
               getValues().password === value || "Passwords need to match",
           })}
         />
-      </FormRow>
-      <FormRow>
-        <Button onClick={reset} type="reset" >
+      </FormRowVertical>
+      <div className="flex gap-10">
+        <Button onClick={reset} type="reset" disabled={isUpdating} >
           Cancel
         </Button>
-        <Button disabled={isUpdating}>Update password</Button>
-      </FormRow>
+        <Button disabled={isUpdating}>{isUpdating ? <SpinnerMini /> : 'Update password'}</Button>
+      </div>
     </Form>
   );
 }
